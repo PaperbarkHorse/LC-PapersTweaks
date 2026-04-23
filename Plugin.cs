@@ -29,6 +29,7 @@ namespace PapersTweaks
         private static void ApplyPatches()
         {
             _harmony.PatchAll(typeof(StartOfRoundPatch));
+            _harmony.PatchAll(typeof(BushWolfEnemyPatch));
         }
     }
 

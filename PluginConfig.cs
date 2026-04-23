@@ -13,6 +13,7 @@ namespace PapersTweaks
         public readonly ConfigEntry<int> vainInfestationChance;
         public readonly ConfigEntry<int> vainInfestationSizeMin;
         public readonly ConfigEntry<int> vainInfestationSizeMax;
+        public readonly ConfigEntry<int> bushWolfHealth;
 
         public PluginConfig(ConfigFile config)
         {
@@ -41,6 +42,13 @@ namespace PapersTweaks
                 "MaxSize",
                 15,
                 "Maximum size of vain shroud patches"
+            );
+
+            bushWolfHealth = config.Bind(
+                "Tweaks.BushWolf",
+                "Health",
+                3,
+                "The amount of health Kidnapper Foxes have. Set to 0 to disable this tweak."
             );
 
             ClearOrphanedEntries(config);

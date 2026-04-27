@@ -7,9 +7,9 @@ namespace PapersTweaks.Patches
     class BushWolfEnemyPatch
     {
 
-        [HarmonyPatch(nameof(BushWolfEnemy.Awake))]
+        [HarmonyPatch(nameof(BushWolfEnemy.Start))]
         [HarmonyPostfix]
-        private static void SetPlanetsMoldPatch(BushWolfEnemy __instance)
+        private static void StartPatch(BushWolfEnemy __instance)
         {
             if (Plugin.BoundConfig.bushWolfHealth.Value > 0)
             {

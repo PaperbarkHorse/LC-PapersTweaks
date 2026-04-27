@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using BepInEx.Configuration;
 using HarmonyLib;
+using LethalConfig;
+using LethalConfig.ConfigItems;
+using LethalConfig.ConfigItems.Options;
 
 namespace PapersTweaks
 {
@@ -69,6 +70,79 @@ namespace PapersTweaks
             ClearOrphanedEntries(config);
             config.Save();
             config.SaveOnConfigSet = true;
+
+            LethalConfigManager.AddConfigItem(
+                new BoolCheckBoxConfigItem(vainInfestationEnabled, new BoolCheckBoxOptions
+                {
+                    Section = "Vain Shroud Infestations",
+                    Name = "Enabled",
+                    Description = "When enabled, Vain Shrouds have a random chance of occuring each round instead of vanilla's spawning where they stay between days."
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntSliderConfigItem(vainInfestationChance, new IntSliderOptions
+                {
+                    Section = "Vain Shroud Infestations",
+                    Name = "Chance",
+                    Description = "The chance (as a percentage) for a moon to have Vain Shrouds. Enable infestations and set to 0 to completely disable Vain Shroud spawning.",
+                    Min = 0,
+                    Max = 100
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntSliderConfigItem(vainInfestationSizeMin, new IntSliderOptions
+                {
+                    Section = "Vain Shroud Infestations",
+                    Name = "Min Size",
+                    Description = "The smallest amount of Vain Shrouds that can spawn, as the number of spawning iterations.",
+                    Min = 0,
+                    Max = 20
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntSliderConfigItem(vainInfestationSizeMax, new IntSliderOptions
+                {
+                    Section = "Vain Shroud Infestations",
+                    Name = "Max Size",
+                    Description = "The largest amount of Vain Shrouds that can spawn, as the number of spawning iterations.",
+                    Min = 0,
+                    Max = 20
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntSliderConfigItem(bushWolfHealth, new IntSliderOptions
+                {
+                    Section = "Kidnapper Fox",
+                    Name = "Health",
+                    Description = "The amount of health Kidnapper Foxes should spawn with. Set to 0 to disable this tweak and use vanilla's default.",
+                    Min = 0,
+                    Max = 7
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntSliderConfigItem(butlerHealth, new IntSliderOptions
+                {
+                    Section = "Butler",
+                    Name = "Health",
+                    Description = "The amount of health Butlers should spawn with. Set to 0 to disable this tweak and use vanilla's default.",
+                    Min = 0,
+                    Max = 8
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new BoolCheckBoxConfigItem(removeButlerBees, new BoolCheckBoxOptions
+                {
+                    Section = "Butler",
+                    Name = "No Butler Bees",
+                    Description = "When enabled, Butlers will not spawn bees when they die."
+                })
+            );
         }
 
         static void ClearOrphanedEntries(ConfigFile cfg)

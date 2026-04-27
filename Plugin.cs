@@ -8,6 +8,7 @@ namespace PapersTweaks
 {
 
     [BepInPlugin(modGUID, modName, modVersion)]
+    [BepInDependency("ainavt.lc.lethalconfig")]
     public class Plugin : BaseUnityPlugin
     {
         public const string modGUID = "horse.paperbark.PapersTweaks";

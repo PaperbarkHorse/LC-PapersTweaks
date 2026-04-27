@@ -30,6 +30,8 @@ namespace PapersTweaks
         {
             _harmony.PatchAll(typeof(StartOfRoundPatch));
             _harmony.PatchAll(typeof(BushWolfEnemyPatch));
+            _harmony.PatchAll(typeof(ButlerEnemyAIPatch));
+            _harmony.PatchAll(typeof(ButlerBeesEnemyAIPatch));
         }
     }
 

@@ -16,6 +16,7 @@ namespace PapersTweaks
         public readonly ConfigEntry<int> vainInfestationSizeMax;
         public readonly ConfigEntry<int> bushWolfHealth;
         public readonly ConfigEntry<int> butlerHealth;
+        public readonly ConfigEntry<int> butlerMaxCount;
         public readonly ConfigEntry<bool> removeButlerBees;
 
         public PluginConfig(ConfigFile config)
@@ -59,6 +60,12 @@ namespace PapersTweaks
                 "Health",
                 4,
                 "The amount of health Butlers have in multiplayer. Set to 0 to disable this tweak."
+            );
+            butlerMaxCount = config.Bind(
+                "Tweaks.Butler",
+                "MaxCount",
+                2,
+                "The maximum number of Butlers which can spawn. Set to 0 to disable this tweak."
             );
             removeButlerBees = config.Bind(
                 "Tweaks.Butler",
@@ -132,6 +139,17 @@ namespace PapersTweaks
                     Description = "The amount of health Butlers should spawn with. Set to 0 to disable this tweak and use vanilla's default.",
                     Min = 0,
                     Max = 8
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntSliderConfigItem(butlerMaxCount, new IntSliderOptions
+                {
+                    Section = "Butler",
+                    Name = "Max Spawns",
+                    Description = "The maximum number of Butlers which can spawn. Set to 0 to disable this tweak and use vanilla's default.",
+                    Min = 0,
+                    Max = 7
                 })
             );
 

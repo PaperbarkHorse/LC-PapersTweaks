@@ -6,11 +6,27 @@ namespace PapersTweaks.Patches
     [HarmonyPatch(typeof(StartOfRound))]
     internal class StartOfRoundPatch
     {
+        [HarmonyPatch("Start")]
+        [HarmonyPostfix]
+        private static void StartPatch()
+        {
+            if (Plugin.BoundConfig.butlerMaxCount.Value > 0)
+            {
+                EnemyType butler = PluginUtils.GetEnemyType("Butler");
+
+                if (butler != null)
+                {
+                    Plugin.logger.LogInfo("Set Butler max count to " + Plugin.BoundConfig.butlerMaxCount.Value);
+                    butler.MaxCount = Plugin.BoundConfig.butlerMaxCount.Value;
+                }
+            }
+        }
+
         [HarmonyPatch(nameof(StartOfRound.SetPlanetsMold))]
         [HarmonyPostfix]
         private static void SetPlanetsMoldPatch(StartOfRound __instance, ref SelectableLevel[] ___levels, ref int ___randomMapSeed)
         {
-            if(Plugin.BoundConfig.vainInfestationEnabled.Value && __instance.IsServer)
+            if (Plugin.BoundConfig.vainInfestationEnabled.Value && __instance.IsServer)
             {
                 RandomiseInfestationMoldSpread(___levels, ___randomMapSeed);
             }

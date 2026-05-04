@@ -1,0 +1,7 @@
+{
+    "name": "PapersTweaks",
+    "description": "A collection of opinionated tweaks to some of the game's mechanics",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/PaperbarkHorse/LC-PapersTweaks",
+    "dependencies": ["BepInEx-BepInExPack-5.4.2305", "AinaVT-LethalConfig-1.4.6"]
+}

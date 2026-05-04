@@ -13,7 +13,7 @@ namespace PapersTweaks
     {
         public const string modGUID = "horse.paperbark.PapersTweaks";
         public const string modName = "PapersTweaks";
-        public const string modVersion = "0.1.0";
+        public const string modVersion = "1.0.0";
         private static Harmony _harmony = new Harmony(modGUID);
         internal static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(modGUID);
         internal static PluginConfig BoundConfig { get; private set; } = null!;

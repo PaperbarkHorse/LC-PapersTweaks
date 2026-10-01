@@ -48,7 +48,7 @@ class PluginUtils
         return null;
     }
 
-    public static void AddItemWithRarity(List<SpawnableItemWithRarity> spawnableScrap, string name, int rarity)
+    public static void AddScrapSpawn(List<SpawnableItemWithRarity> spawnableScrap, string name, int rarity)
     {
         Item item = GetItem(name);
 

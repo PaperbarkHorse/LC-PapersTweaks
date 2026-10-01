@@ -12,12 +12,12 @@ internal class StartOfRoundPatch
     [HarmonyPostfix]
     private static void StartDineLootPatch()
     {
-        if (Plugin.BoundConfig.ImprovedDineLoot.Value == true)
-        {
-            Plugin.logger.LogInfo("Updating scrap spawns on Dine");
+        if (Plugin.BoundConfig.ImprovedDineLoot.Value != true) return;
 
-            string[] scrapToRemove = [
-                "WhoopieCushion",
+        Plugin.logger.LogInfo("Updating scrap spawns on Dine");
+
+        string[] scrapToRemove = [
+            "WhoopieCushion",
                 "EasterEgg",
                 "SeveredHand",
                 "SeveredBone",
@@ -29,96 +29,79 @@ internal class StartOfRoundPatch
                 "SeveredTongue",
             ];
 
-            SelectableLevel dine = PluginUtils.GetSelectableLevel("DineLevel");
+        SelectableLevel dine = PluginUtils.GetSelectableLevel("DineLevel");
+        if (dine == null) return;
 
-            if (dine != null)
-            {
-                dine.spawnableScrap.RemoveAll(scrap => scrapToRemove.Contains(scrap.spawnableItem.name));
+        dine.spawnableScrap.RemoveAll(scrap => scrapToRemove.Contains(scrap.spawnableItem.name));
 
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredBone", 200);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredEar", 50);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredFoot", 70);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredHand", 70);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredHeart", 50);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredThigh", 50);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SeveredTongue", 50);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredBone", 200);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredEar", 50);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredFoot", 70);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredHand", 70);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredHeart", 50);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredThigh", 50);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SeveredTongue", 50);
 
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "7Ball", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Airhorn", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Bell", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "BottleBin", 50);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Brush", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Candy", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "ChemicalJug", 10);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Clock", 20);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "ClownHorn", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Dentures", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "DustPan", 20);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "EasterEgg", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "EggBeater", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "FancyCup", 10);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "FancyLamp", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "FancyPainting", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "FishTestProp", 50);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "FlashLaserPointer", 15);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Flask", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "GiftBox", 80);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "GoldBar", 1);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Hairdryer", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "MagnifyingGlass", 20);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "MoldPan", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Mug", 20);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "PerfumeBottle", 25);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Phone", 15);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "PickleJar", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "PillBottle", 40);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "PlasticCup", 100);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Remote", 10);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Ring", 20);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "RobotToy", 10);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "RubberDuck", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SoccerBall", 5);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "SodaCanRed", 100);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "ToiletPaperRolls", 10);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "Toothpaste", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "ToyCube", 30);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "ToyTrain", 10);
-                PluginUtils.AddItemWithRarity(dine.spawnableScrap, "WhoopieCushion", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "7Ball", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Airhorn", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Bell", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "BottleBin", 50);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Brush", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Candy", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ChemicalJug", 10);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Clock", 20);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ClownHorn", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Dentures", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "DustPan", 20);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "EasterEgg", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "EggBeater", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "FancyCup", 10);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "FancyLamp", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "FancyPainting", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "FishTestProp", 50);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "FlashLaserPointer", 15);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Flask", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "GiftBox", 80);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "GoldBar", 1);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Hairdryer", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "MagnifyingGlass", 20);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "MoldPan", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Mug", 20);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "PerfumeBottle", 25);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Phone", 15);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "PickleJar", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "PillBottle", 40);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "PlasticCup", 100);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Remote", 10);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Ring", 20);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "RobotToy", 10);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "RubberDuck", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SoccerBall", 5);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "SodaCanRed", 100);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ToiletPaperRolls", 10);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Toothpaste", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ToyCube", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ToyTrain", 10);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "WhoopieCushion", 30);
 
-                dine.minScrap = 35;
-                dine.maxScrap = 48;
-                dine.minTotalScrapValue = 600;
-                dine.maxTotalScrapValue = 700;
-            }
-        }
-
-        // Butler spawning
-        if (Plugin.BoundConfig.ButlerMaxCount.Value > 0)
-        {
-            EnemyType butler = PluginUtils.GetEnemyType("Butler");
-
-            if (butler != null)
-            {
-                Plugin.logger.LogInfo("Set Butler max count to " + Plugin.BoundConfig.ButlerMaxCount.Value);
-                butler.MaxCount = Plugin.BoundConfig.ButlerMaxCount.Value;
-            }
-        }
+        dine.minScrap = 35;
+        dine.maxScrap = 48;
+        dine.minTotalScrapValue = 600;
+        dine.maxTotalScrapValue = 700;
     }
 
     [HarmonyPatch("Start")]
     [HarmonyPostfix]
     private static void StartButlerSpawningPatch()
     {
-        if (Plugin.BoundConfig.ButlerMaxCount.Value > 0)
-        {
-            EnemyType butler = PluginUtils.GetEnemyType("Butler");
+        if (Plugin.BoundConfig.ButlerMaxCount.Value <= 0) return;
 
-            if (butler != null)
-            {
-                Plugin.logger.LogInfo("Set Butler max count to " + Plugin.BoundConfig.ButlerMaxCount.Value);
-                butler.MaxCount = Plugin.BoundConfig.ButlerMaxCount.Value;
-            }
-        }
+        EnemyType butler = PluginUtils.GetEnemyType("Butler");
+
+        if (butler == null) return;
+
+        Plugin.logger.LogInfo("Set Butler max count to " + Plugin.BoundConfig.ButlerMaxCount.Value);
+        butler.MaxCount = Plugin.BoundConfig.ButlerMaxCount.Value;
     }
 
     [HarmonyPatch(nameof(StartOfRound.SetPlanetsMold))]

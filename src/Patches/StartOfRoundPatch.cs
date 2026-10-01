@@ -18,16 +18,16 @@ internal class StartOfRoundPatch
 
         string[] scrapToRemove = [
             "WhoopieCushion",
-                "EasterEgg",
-                "SeveredHand",
-                "SeveredBone",
-                "SeveredBoneRib",
-                "SeveredEar",
-                "SeveredFoot",
-                "SeveredThigh",
-                "SeveredHeart",
-                "SeveredTongue",
-            ];
+            "EasterEgg",
+            "SeveredHand",
+            "SeveredBone",
+            "SeveredBoneRib",
+            "SeveredEar",
+            "SeveredFoot",
+            "SeveredThigh",
+            "SeveredHeart",
+            "SeveredTongue",
+        ];
 
         SelectableLevel dine = PluginUtils.GetSelectableLevel("DineLevel");
         if (dine == null) return;

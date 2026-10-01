@@ -16,7 +16,7 @@ namespace PapersTweaks.Patches
                 return;
             }
 
-            if (Plugin.BoundConfig.removeButlerBees.Value)
+            if (Plugin.BoundConfig.RemoveButlerBees.Value)
             {
                 if (__instance.thisNetworkObject.IsSpawned)
                 {

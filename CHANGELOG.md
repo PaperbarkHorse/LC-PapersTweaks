@@ -1,4 +1,9 @@
-## v1.0.0
+# v1.1.0
+
+- Added tweak for Dine's scrap spawning, making it more balanced in comparison to other moons
+- Minor internal code changes
+
+# v1.0.0
 
 - First version!
 - Added Vain Shroud Infestation mechanic

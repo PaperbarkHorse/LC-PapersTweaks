@@ -10,68 +10,76 @@ namespace PapersTweaks
 {
     class PluginConfig
     {
-        public readonly ConfigEntry<bool> vainInfestationEnabled;
-        public readonly ConfigEntry<int> vainInfestationChance;
-        public readonly ConfigEntry<int> vainInfestationSizeMin;
-        public readonly ConfigEntry<int> vainInfestationSizeMax;
-        public readonly ConfigEntry<int> bushWolfHealth;
-        public readonly ConfigEntry<int> butlerHealth;
-        public readonly ConfigEntry<int> butlerMaxCount;
-        public readonly ConfigEntry<bool> removeButlerBees;
+        public readonly ConfigEntry<bool> VainInfestationEnabled;
+        public readonly ConfigEntry<int> VainInfestationChance;
+        public readonly ConfigEntry<int> VainInfestationSizeMin;
+        public readonly ConfigEntry<int> VainInfestationSizeMax;
+        public readonly ConfigEntry<int> BushWolfHealth;
+        public readonly ConfigEntry<int> ButlerHealth;
+        public readonly ConfigEntry<int> ButlerMaxCount;
+        public readonly ConfigEntry<bool> RemoveButlerBees;
+        public readonly ConfigEntry<bool> ImprovedDineLoot;
 
         public PluginConfig(ConfigFile config)
         {
             config.SaveOnConfigSet = false;
 
-            vainInfestationEnabled = config.Bind(
+            VainInfestationEnabled = config.Bind(
                 "Tweaks.VainInfestation",
                 "Enabled",
                 true,
                 "Whether random Vain Shroud infestations should replace the vanilla spreading mechanics"
             );
-            vainInfestationChance = config.Bind(
+            VainInfestationChance = config.Bind(
                 "Tweaks.VainInfestation",
                 "Chance",
                 5,
                 "The chance a moon is infested each day (0 - 100)"
             );
-            vainInfestationSizeMin = config.Bind(
+            VainInfestationSizeMin = config.Bind(
                 "Tweaks.VainInfestation",
                 "MinSize",
                 5,
                 "Minimum size of vain shroud patches"
             );
-            vainInfestationSizeMax = config.Bind(
+            VainInfestationSizeMax = config.Bind(
                 "Tweaks.VainInfestation",
                 "MaxSize",
                 15,
                 "Maximum size of vain shroud patches"
             );
 
-            bushWolfHealth = config.Bind(
+            BushWolfHealth = config.Bind(
                 "Tweaks.BushWolf",
                 "Health",
                 3,
                 "The amount of health Kidnapper Foxes have. Set to 0 to disable this tweak."
             );
 
-            butlerHealth = config.Bind(
+            ButlerHealth = config.Bind(
                 "Tweaks.Butler",
                 "Health",
                 4,
                 "The amount of health Butlers have in multiplayer. Set to 0 to disable this tweak."
             );
-            butlerMaxCount = config.Bind(
+            ButlerMaxCount = config.Bind(
                 "Tweaks.Butler",
                 "MaxCount",
                 2,
                 "The maximum number of Butlers which can spawn. Set to 0 to disable this tweak."
             );
-            removeButlerBees = config.Bind(
+            RemoveButlerBees = config.Bind(
                 "Tweaks.Butler",
                 "Remove Butler Bees",
                 true,
                 "Prevents Butler Bees from spawning when a butler Dies."
+            );
+
+            ImprovedDineLoot = config.Bind(
+                "Tweaks.Dine",
+                "Improved Loot Pool",
+                true,
+                "Changes the scrap that spawns on Dine to be balanced similar to other moons, making Dine more feasible to visit."
             );
 
             ClearOrphanedEntries(config);
@@ -79,7 +87,7 @@ namespace PapersTweaks
             config.SaveOnConfigSet = true;
 
             LethalConfigManager.AddConfigItem(
-                new BoolCheckBoxConfigItem(vainInfestationEnabled, new BoolCheckBoxOptions
+                new BoolCheckBoxConfigItem(VainInfestationEnabled, new BoolCheckBoxOptions
                 {
                     Section = "Vain Shroud Infestations",
                     Name = "Enabled",
@@ -88,7 +96,7 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new IntSliderConfigItem(vainInfestationChance, new IntSliderOptions
+                new IntSliderConfigItem(VainInfestationChance, new IntSliderOptions
                 {
                     Section = "Vain Shroud Infestations",
                     Name = "Chance",
@@ -99,7 +107,7 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new IntSliderConfigItem(vainInfestationSizeMin, new IntSliderOptions
+                new IntSliderConfigItem(VainInfestationSizeMin, new IntSliderOptions
                 {
                     Section = "Vain Shroud Infestations",
                     Name = "Min Size",
@@ -110,7 +118,7 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new IntSliderConfigItem(vainInfestationSizeMax, new IntSliderOptions
+                new IntSliderConfigItem(VainInfestationSizeMax, new IntSliderOptions
                 {
                     Section = "Vain Shroud Infestations",
                     Name = "Max Size",
@@ -121,7 +129,7 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new IntSliderConfigItem(bushWolfHealth, new IntSliderOptions
+                new IntSliderConfigItem(BushWolfHealth, new IntSliderOptions
                 {
                     Section = "Kidnapper Fox",
                     Name = "Health",
@@ -132,7 +140,7 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new IntSliderConfigItem(butlerHealth, new IntSliderOptions
+                new IntSliderConfigItem(ButlerHealth, new IntSliderOptions
                 {
                     Section = "Butler",
                     Name = "Health",
@@ -143,7 +151,7 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new IntSliderConfigItem(butlerMaxCount, new IntSliderOptions
+                new IntSliderConfigItem(ButlerMaxCount, new IntSliderOptions
                 {
                     Section = "Butler",
                     Name = "Max Spawns",
@@ -154,11 +162,20 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new BoolCheckBoxConfigItem(removeButlerBees, new BoolCheckBoxOptions
+                new BoolCheckBoxConfigItem(RemoveButlerBees, new BoolCheckBoxOptions
                 {
                     Section = "Butler",
                     Name = "No Butler Bees",
                     Description = "When enabled, Butlers will not spawn bees when they die."
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new BoolCheckBoxConfigItem(ImprovedDineLoot, new BoolCheckBoxOptions
+                {
+                    Section = "Dine",
+                    Name = "Improved Loot Pool",
+                    Description = "Changes the scrap that spawns on Dine to be balanced similar to other moons, making Dine more feasible to visit."
                 })
             );
         }

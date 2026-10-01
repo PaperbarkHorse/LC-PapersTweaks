@@ -11,10 +11,10 @@ namespace PapersTweaks.Patches
         [HarmonyPostfix]
         private static void StartPatch(BushWolfEnemy __instance)
         {
-            if (Plugin.BoundConfig.bushWolfHealth.Value > 0)
+            if (Plugin.BoundConfig.BushWolfHealth.Value > 0)
             {
-                Plugin.logger.LogInfo("Set Kidnapper Fox HP to " + Plugin.BoundConfig.bushWolfHealth.Value + ", was " + __instance.enemyHP);
-                __instance.enemyHP = Plugin.BoundConfig.bushWolfHealth.Value;
+                Plugin.logger.LogInfo("Set Kidnapper Fox HP to " + Plugin.BoundConfig.BushWolfHealth.Value + ", was " + __instance.enemyHP);
+                __instance.enemyHP = Plugin.BoundConfig.BushWolfHealth.Value;
             }
         }
 

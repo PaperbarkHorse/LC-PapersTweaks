@@ -3,6 +3,7 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using PapersTweaks.Patches;
+using UnityEngine;
 
 namespace PapersTweaks
 {
@@ -13,9 +14,10 @@ namespace PapersTweaks
     {
         public const string modGUID = "horse.paperbark.PapersTweaks";
         public const string modName = "PapersTweaks";
-        public const string modVersion = "1.0.0";
-        private static Harmony _harmony = new Harmony(modGUID);
-        internal static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(modGUID);
+        public const string modVersion = "1.1.0";
+
+        private static Harmony harmony = new Harmony(modGUID);
+        internal static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(modName);
         internal static PluginConfig BoundConfig { get; private set; } = null!;
 
         void Awake()
@@ -29,10 +31,7 @@ namespace PapersTweaks
 
         private static void ApplyPatches()
         {
-            _harmony.PatchAll(typeof(StartOfRoundPatch));
-            _harmony.PatchAll(typeof(BushWolfEnemyPatch));
-            _harmony.PatchAll(typeof(ButlerEnemyAIPatch));
-            _harmony.PatchAll(typeof(ButlerBeesEnemyAIPatch));
+            harmony.PatchAll();
         }
     }
 

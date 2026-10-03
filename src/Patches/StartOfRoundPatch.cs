@@ -83,11 +83,42 @@ internal class StartOfRoundPatch
         PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ToyCube", 30);
         PluginUtils.AddScrapSpawn(dine.spawnableScrap, "ToyTrain", 10);
         PluginUtils.AddScrapSpawn(dine.spawnableScrap, "WhoopieCushion", 30);
+        PluginUtils.AddScrapSpawn(dine.spawnableScrap, "Zeddog", 1);
 
         dine.minScrap = 35;
         dine.maxScrap = 48;
         dine.minTotalScrapValue = 600;
         dine.maxTotalScrapValue = 700;
+    }
+
+    [HarmonyPatch("Start")]
+    [HarmonyPostfix]
+    private static void StartEmbrionLootPatch()
+    {
+        if (Plugin.BoundConfig.ImprovedEmbrionLoot.Value != true) return;
+
+        Plugin.logger.LogInfo("Updating scrap spawns on Embrion");
+
+        string[] scrapToRemove = [
+            //
+        ];
+
+        SelectableLevel embrion = PluginUtils.GetSelectableLevel("EmbrionLevel");
+        if (embrion == null) return;
+
+        embrion.spawnableScrap.RemoveAll(scrap => scrapToRemove.Contains(scrap.spawnableItem.name));
+
+        PluginUtils.AddScrapSpawn(embrion.spawnableScrap, "ChemicalJug", 20);
+        PluginUtils.AddScrapSpawn(embrion.spawnableScrap, "GoldBar", 5);
+        PluginUtils.AddScrapSpawn(embrion.spawnableScrap, "FancyCup", 10);
+        PluginUtils.AddScrapSpawn(embrion.spawnableScrap, "Ring", 10);
+        PluginUtils.AddScrapSpawn(embrion.spawnableScrap, "WhoopieCushion", 10);
+        PluginUtils.AddScrapSpawn(embrion.spawnableScrap, "Zeddog", 1);
+
+        embrion.minScrap = 30;
+        embrion.maxScrap = 40;
+        embrion.minTotalScrapValue = 600;
+        embrion.maxTotalScrapValue = 800;
     }
 
     [HarmonyPatch("Start")]

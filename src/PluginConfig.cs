@@ -19,6 +19,7 @@ namespace PapersTweaks
         public readonly ConfigEntry<int> ButlerMaxCount;
         public readonly ConfigEntry<bool> RemoveButlerBees;
         public readonly ConfigEntry<bool> ImprovedDineLoot;
+        public readonly ConfigEntry<bool> ImprovedEmbrionLoot;
 
         public PluginConfig(ConfigFile config)
         {
@@ -79,7 +80,14 @@ namespace PapersTweaks
                 "Tweaks.Dine",
                 "Improved Loot Pool",
                 true,
-                "Changes the scrap that spawns on Dine to be balanced similar to other moons, making Dine more feasible to visit."
+                "Changes the scrap that spawns on Dine to be balanced similar to other moons, making it more feasible to visit."
+            );
+
+            ImprovedEmbrionLoot = config.Bind(
+                "Tweaks.Embrion",
+                "Improved Loot Pool",
+                true,
+                "Changes the scrap that spawns on Embrion to be balanced similar to other moons, making it more feasible to visit."
             );
 
             ClearOrphanedEntries(config);
@@ -175,7 +183,16 @@ namespace PapersTweaks
                 {
                     Section = "Dine",
                     Name = "Improved Loot Pool",
-                    Description = "Changes the scrap that spawns on Dine to be balanced similar to other moons, making Dine more feasible to visit."
+                    Description = "Changes the scrap that spawns on Dine to be balanced similar to other moons, making it more feasible to visit."
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new BoolCheckBoxConfigItem(ImprovedDineLoot, new BoolCheckBoxOptions
+                {
+                    Section = "Embrion",
+                    Name = "Improved Loot Pool",
+                    Description = "Changes the scrap that spawns on Embrion to be balanced similar to other moons, making it more feasible to visit."
                 })
             );
         }

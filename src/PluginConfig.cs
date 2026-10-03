@@ -251,7 +251,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "Shotgun Shell Rarity",
-                    Description = "Weight chance for a Shotgun Shell to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for a Shotgun Shell to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })
@@ -261,7 +261,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "Shovel Rarity",
-                    Description = "Weight chance for a Shovel to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for a Shovel to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })
@@ -271,7 +271,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "Spray Paint Rarity",
-                    Description = "Weight chance for Spray Paint to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for Spray Paint to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })
@@ -281,7 +281,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "Flashlight Rarity",
-                    Description = "Weight chance for a Flashlight to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for a Flashlight to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })
@@ -291,7 +291,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "Pro Flashlight Rarity",
-                    Description = "Weight chance for a Pro Flashlight to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for a Pro Flashlight to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })
@@ -301,7 +301,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "TZP Inhalant Rarity",
-                    Description = "Weight chance for TZP Inhalant to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for TZP Inhalant to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })
@@ -311,7 +311,7 @@ namespace PapersTweaks
                 {
                     Section = "Tool Scraps",
                     Name = "Extension Ladder Rarity",
-                    Description = "Weight chance for an Extension Ladder to spawn as scrap. Set to 0 to disable.",
+                    Description = "Weighted chance for an Extension Ladder to spawn as scrap. Set to 0 to disable.",
                     Min = 0,
                     Max = 10000,
                 })

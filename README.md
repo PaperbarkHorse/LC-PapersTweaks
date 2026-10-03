@@ -22,6 +22,22 @@ This completely replaces the vanillla spawning mechanics where Vain Shrouds stay
 - Lowers the spawn limit for Butlers to 2 instead of the default 7, so moons like Dine won't be overrun by them.
 - Prevents Butler Bees from spawning when a Butler dies.
 
+### Scrap Spawning
+
+- New loot table for Dine which makes it more balanced with other moons while keepings its unique scrap.
+- Additional scrap and increased loot amounts on Embrion.
+
+### Tools as Scrap
+
+- Makes several tool items spawn rarely as scrap on all moons:
+    - Extension Ladder
+    - Flashlight
+    - Pro Flashlight
+    - Shotgun Shell
+    - Shovel
+    - Spray Paint
+    - TZP Inhalant
+
 ## Bug Reports
 
 If you find any bugs caused by the mod, please report them on the [GitHub issues](https://github.com/PaperbarkHorse/LC-PapersTweaks/issues) page.

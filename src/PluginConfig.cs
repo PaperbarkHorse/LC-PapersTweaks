@@ -20,6 +20,13 @@ namespace PapersTweaks
         public readonly ConfigEntry<bool> RemoveButlerBees;
         public readonly ConfigEntry<bool> ImprovedDineLoot;
         public readonly ConfigEntry<bool> ImprovedEmbrionLoot;
+        public readonly ConfigEntry<int> ScrapGunAmmoRarity;
+        public readonly ConfigEntry<int> ScrapShovelRarity;
+        public readonly ConfigEntry<int> ScrapSprayPaintRarity;
+        public readonly ConfigEntry<int> ScrapFlashlightRarity;
+        public readonly ConfigEntry<int> ScrapProFlashlightRarity;
+        public readonly ConfigEntry<int> ScrapTZPInhalantRarity;
+        public readonly ConfigEntry<int> ScrapExtensionLadderRarity;
 
         public PluginConfig(ConfigFile config)
         {
@@ -88,6 +95,49 @@ namespace PapersTweaks
                 "Improved Loot Pool",
                 true,
                 "Changes the scrap that spawns on Embrion to be balanced similar to other moons, making it more feasible to visit."
+            );
+
+            ScrapGunAmmoRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "Shotgun Shell Rarity",
+                4,
+                "Weighted chance for a Shotgun Shell to spawn as scrap. Set to 0 to disable."
+            );
+            ScrapShovelRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "Shovel Rarity",
+                3,
+                "Weighted chance for a Shovel to spawn as scrap. Set to 0 to disable."
+            );
+            ScrapSprayPaintRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "Spray Paint Rarity",
+                3,
+                "Weighted chance for Spray Paint to spawn as scrap. Set to 0 to disable."
+            );
+            ScrapFlashlightRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "Flashlight Rarity",
+                6,
+                "Weighted chance for a Flashlight to spawn as scrap. Set to 0 to disable."
+            );
+            ScrapProFlashlightRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "Pro Flashlight Rarity",
+                1,
+                "Weighted chance for a Pro Flashlight to spawn as scrap. Set to 0 to disable."
+            );
+            ScrapTZPInhalantRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "TZP Inhalant Rarity",
+                3,
+                "Weighted chance for a TZP Inhalant to spawn as scrap. Set to 0 to disable."
+            );
+            ScrapExtensionLadderRarity = config.Bind(
+                "Tweaks.Tool Scraps",
+                "Extension Ladder Rarity",
+                1,
+                "Weighted chance for an Extension Ladder to spawn as scrap. Set to 0 to disable."
             );
 
             ClearOrphanedEntries(config);
@@ -188,11 +238,82 @@ namespace PapersTweaks
             );
 
             LethalConfigManager.AddConfigItem(
-                new BoolCheckBoxConfigItem(ImprovedDineLoot, new BoolCheckBoxOptions
+                new BoolCheckBoxConfigItem(ImprovedEmbrionLoot, new BoolCheckBoxOptions
                 {
                     Section = "Embrion",
                     Name = "Improved Loot Pool",
                     Description = "Changes the scrap that spawns on Embrion to be balanced similar to other moons, making it more feasible to visit."
+                })
+            );
+
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapGunAmmoRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "Shotgun Shell Rarity",
+                    Description = "Weight chance for a Shotgun Shell to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
+                })
+            );
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapShovelRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "Shovel Rarity",
+                    Description = "Weight chance for a Shovel to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
+                })
+            );
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapSprayPaintRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "Spray Paint Rarity",
+                    Description = "Weight chance for Spray Paint to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
+                })
+            );
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapFlashlightRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "Flashlight Rarity",
+                    Description = "Weight chance for a Flashlight to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
+                })
+            );
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapProFlashlightRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "Pro Flashlight Rarity",
+                    Description = "Weight chance for a Pro Flashlight to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
+                })
+            );
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapTZPInhalantRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "TZP Inhalant Rarity",
+                    Description = "Weight chance for TZP Inhalant to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
+                })
+            );
+            LethalConfigManager.AddConfigItem(
+                new IntInputFieldConfigItem(ScrapExtensionLadderRarity, new IntInputFieldOptions
+                {
+                    Section = "Tool Scraps",
+                    Name = "Extension Ladder Rarity",
+                    Description = "Weight chance for an Extension Ladder to spawn as scrap. Set to 0 to disable.",
+                    Min = 0,
+                    Max = 10000,
                 })
             );
         }

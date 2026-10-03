@@ -1,6 +1,8 @@
 # v1.1.0
 
-- Added tweak for Dine's scrap spawning, making it more balanced in comparison to other moons
+- Added tweak for spawning tool items as scrap
+- Added tweak for improved scrap spawning on Dine
+- Added tweak for improved scrap spawning on Embrion
 - Minor internal code changes
 
 # v1.0.0

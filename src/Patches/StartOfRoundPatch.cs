@@ -123,6 +123,46 @@ internal class StartOfRoundPatch
 
     [HarmonyPatch("Start")]
     [HarmonyPostfix]
+    private static void StartGlobalLootLootPatch()
+    {
+        Plugin.logger.LogInfo("Adding global loot");
+
+        foreach (var level in Resources.FindObjectsOfTypeAll<SelectableLevel>())
+        {
+            if (Plugin.BoundConfig.ScrapGunAmmoRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "GunAmmo", Plugin.BoundConfig.ScrapGunAmmoRarity.Value);
+            }
+            if (Plugin.BoundConfig.ScrapShovelRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "Shovel", Plugin.BoundConfig.ScrapShovelRarity.Value);
+            }
+            if (Plugin.BoundConfig.ScrapSprayPaintRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "SprayPaint", Plugin.BoundConfig.ScrapSprayPaintRarity.Value);
+            }
+            if (Plugin.BoundConfig.ScrapFlashlightRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "Flashlight", Plugin.BoundConfig.ScrapFlashlightRarity.Value);
+            }
+            if (Plugin.BoundConfig.ScrapProFlashlightRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "ProFlashlight", Plugin.BoundConfig.ScrapProFlashlightRarity.Value);
+            }
+            if (Plugin.BoundConfig.ScrapTZPInhalantRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "TZPInhalant", Plugin.BoundConfig.ScrapTZPInhalantRarity.Value);
+            }
+            if (Plugin.BoundConfig.ScrapExtensionLadderRarity.Value > 0)
+            {
+                PluginUtils.AddScrapSpawn(level.spawnableScrap, "ExtensionLadder", Plugin.BoundConfig.ScrapExtensionLadderRarity.Value);
+            }
+        }
+
+    }
+
+    [HarmonyPatch("Start")]
+    [HarmonyPostfix]
     private static void StartButlerSpawningPatch()
     {
         if (Plugin.BoundConfig.ButlerMaxCount.Value <= 0) return;

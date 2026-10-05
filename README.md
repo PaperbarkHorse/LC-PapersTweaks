@@ -2,7 +2,7 @@
 
 This mod is a collection of various gameplay tweaks I've made to make mine and my friends' lives easier in Lethal Company, and to make some _troublesome_ mechanics fairer for us _- looking at you, Kidnapper Fox._
 
-All of the tweaks can be disabled or configured either by editing the config file or using LethalConfig in-game, though yb default they are all enabled with numbers I've found work best for my group of friends.
+All of the tweaks can be disabled or configured either by editing the config file or using LethalConfig in-game, though by default they are all enabled with numbers I've found work best for my group of friends.
 
 ## Tweaks
 
